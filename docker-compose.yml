@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    # Optional if you want to connect from host tools
+    ports:
+      - "27017:27017"
+
+  server:
+    build:
+      context: ./server
+    restart: unless-stopped
+    env_file:
+      - server/.env
+    environment:
+      # Override MONGO_URI to use the compose network host "mongo"
+      MONGO_URI: mongodb://mongo:27017/llt?retryWrites=true&w=majority
+      # The browser will hit http://localhost:8080, so allow that in CORS:
+      CORS_ORIGIN: http://localhost:8080
+      NODE_ENV: production
+    depends_on:
+      - mongo
+    ports:
+      - "5000:5000"
+
+  client:
+    build:
+      context: ./client
+      args:
+        # Frontend runs in the user's browser, so it must call the host-mapped port.
+        # If you change server port mapping, update this too.
+        VITE_API_BASE: http://localhost:5000/api
+    restart: unless-stopped
+    depends_on:
+      - server
+    ports:
+      - "8080:80"
+
+volumes:
+  mongo-data:
