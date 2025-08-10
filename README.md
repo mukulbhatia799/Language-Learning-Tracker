@@ -123,8 +123,3 @@ npm run dev
 ## 📌 Notes
 - Ensure you have a valid **Google Gemini API Key** to generate AI-based questions.
 - For deployment, configure environment variables for both frontend and backend in your hosting platform.
-
----
-
-## 📜 License
-MIT License. Feel free to use and modify for your own projects.
