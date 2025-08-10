@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glassmorphism helpers */
+.glass { @apply bg-white/10 backdrop-blur-md border border-white/20; }
+.card { @apply glass rounded-2xl shadow-glow p-6; }
+.btn { @apply inline-flex items-center justify-center px-4 py-2 rounded-xl font-medium transition-all hover:scale-[1.02] active:scale-95; }
+.btn-primary { @apply btn bg-brand hover:bg-brand-dark; }
+.input { @apply w-full glass rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand; }
+.table-head { @apply text-left text-xs uppercase tracking-wider text-slate-300; }
