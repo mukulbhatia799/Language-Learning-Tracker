@@ -140,7 +140,7 @@ export default function Profile() {
       {/* Danger zone */}
       <div className="card space-y-3">
         <div className="text-lg font-semibold text-red-300">Danger Zone</div>
-        <button className="btn bg-red-600 hover:bg-red-500" onClick={deleteAccount}>Delete Account</button>
+        <button className="btn bg-red-600 hover:bg-red-500 text-white" onClick={deleteAccount}>Delete Account</button>
       </div>
     </div>
   );

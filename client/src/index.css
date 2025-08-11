@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global palette (light by default) */
+:root {
+  --bg: #f8fafc;           /* slate-50 */
+  --panel: #ffffff;        /* white */
+  --text: #0f172a;         /* slate-900 */
+  --muted: #475569;        /* slate-600 */
+  --border: #e2e8f0;       /* slate-200 */
+  --ring: #93c5fd;         /* brand-300 */
+  --brand: #3b82f6;        /* brand-500 */
+  --brand-600: #2563eb;
+  --brand-50: #eff6ff;
+}
+
+@layer base {
+  html, body, #root {
+    @apply h-full;
+    @apply text-black;
+  }
+
+  body {
+    color: var(--text);
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #e0f2fe 0%, transparent 35%),
+      radial-gradient(1000px 500px at 110% 10%, #dbeafe 0%, transparent 30%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  ::selection { background: var(--brand-50); color: var(--text); }
+}
+
+/* Component tokens so you don't touch every page */
+@layer components {
+  .card {
+    @apply bg-white border border-[color:var(--border)] rounded-2xl p-4 md:p-5;
+  }
+
+  .hover-card {
+    @apply transition-transform duration-200 hover:-translate-y-0.5
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-black bg-white px-3 py-2 text-sm
+           placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)];
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-xl border border-transparent px-3.5 py-2
+           text-sm font-medium transition-all duration-150;
+  }
+
+  .btn-primary {
+    background: linear-gradient(180deg, var(--brand), var(--brand-600));
+    @apply text-white hover:brightness-105 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply border-[color:var(--border)] text-[color:var(--text)] bg-white
+           hover:bg-[color:var(--brand-50)] hover:border-brand-200;
+  }
+
+  .btn-ghost {
+    @apply text-[color:var(--text)] hover:bg-brand-50;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs;
+  }
+
+  .nav-link {
+    @apply text-[color:var(--muted)] transition-colors;
+  }
+
+  .nav-link-active {
+    @apply text-brand-700 relative;
+  }
+  .nav-link-active::after {
+    content: "";
+    @apply absolute left-0 right-0 -bottom-1 h-0.5 bg-brand-500 rounded-full;
+  }
+
+  /* Tables (DataTable) */
+  .table {
+    @apply w-full text-sm;
+  }
+  .table th {
+    @apply text-left text-slate-500 font-semibold pb-2 border-b border-[color:var(--border)];
+  }
+  .table td {
+    @apply py-3 border-b border-[color:var(--border)];
+  }
+}
+
+/* Small utility sugar */
+.shadow-glow { box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); }
+.text-brand  { color: var(--brand); }
+.bg-brand50  { background-color: var(--brand-50); }

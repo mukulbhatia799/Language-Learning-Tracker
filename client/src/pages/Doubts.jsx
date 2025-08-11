@@ -114,8 +114,8 @@ export default function DoubtsPage() {
         <div className="text-md font-semibold">Ask AI</div>
         <div className="h-64 overflow-y-auto space-y-2 bg-slate-900/40 rounded-xl p-3 border border-white/5">
           {aiMessages.length === 0 && (
-            <div className="text-xs text-slate-400">
-              Ask anything about your language learning. The AI will reply concisely.
+            <div className="text-sm text-white/100 italic bg-blue-900/50 p-2 rounded-lg">
+              Ask anything about your language learning. The AI will reply.
             </div>
           )}
           {aiMessages.map((m, i) => {

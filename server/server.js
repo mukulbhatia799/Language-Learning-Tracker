@@ -18,6 +18,12 @@ import studyLogRoutes from './routes/studylog.routes.js';
 import notesRoutes from './routes/notes.routes.js';
 import doubtsRoutes from './routes/doubts.routes.js';
 
+import http from 'http';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import chatRoutes from './routes/chat.routes.js';
+import { initSocket } from './socket.js';
+
 
 const app = express();
 app.use(helmet());
@@ -38,9 +44,14 @@ app.use('/api/submissions', submissionsRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use('/api/studylog', studyLogRoutes);
 app.use('/api/notes', notesRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/notifications', notificationsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
+
+const server = http.createServer(app);
+initSocket(server);
 
 const PORT = process.env.PORT || 5000;
 connectDB(process.env.MONGO_URI)

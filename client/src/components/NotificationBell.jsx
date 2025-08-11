@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as notif from '../services/notifications';
+import { getSocket } from '../socket';
 
 export default function NotificationBell() {
   const [items, setItems] = useState([]);
@@ -17,6 +18,15 @@ export default function NotificationBell() {
   }
 
   useEffect(() => { load(); }, []);
+  
+  useEffect(() => {
+    load();
+    const s = getSocket();
+    if (!s) return;
+    const onNew = (n) => setItems(prev => [n, ...prev]);
+    s.on('notification:new', onNew);
+    return () => s.off('notification:new', onNew);
+  }, []);
 
   const unread = items.filter(i => !i.readAt).length;
 

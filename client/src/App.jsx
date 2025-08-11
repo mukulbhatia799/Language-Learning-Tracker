@@ -16,7 +16,7 @@ import Notes from './pages/Notes';
 import { TestsHome, Take } from './pages/Tests';
 import DoubtsPage from './pages/Doubts';
 import TutorDoubts from './pages/TutorDoubts';
-
+import Chat from './pages/Chat';
 
 function Private({ children }) {
   const token = localStorage.getItem('token');
@@ -47,6 +47,7 @@ export default function App() {
           <Route path="/tests/:id" element={<Private><Take /></Private>} />
           <Route path="/doubts" element={<Private><DoubtsPage /></Private>} />
           <Route path="/tutor/doubts" element={<Private><TutorDoubts /></Private>} />
+          <Route path="/chat" element={<Private><Chat /></Private>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

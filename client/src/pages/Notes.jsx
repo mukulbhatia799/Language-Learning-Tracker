@@ -8,8 +8,8 @@ export default function Notes() {
   const [page, setPage] = useState(1);
   const limit = 20;
 
-  const [filters, setFilters] = useState({ q: '', source: 'English', target: 'Hindi' });
-  const [form, setForm] = useState({ source: 'English', target: 'Hindi', from: '', to: '', example: '' });
+  const [filters, setFilters] = useState({ q: '', source: '', target: '' });
+  const [form, setForm] = useState({ source: '', target: '', from: '', to: '', example: '' });
 
   async function load(p = page) {
     const res = await notes.list({ ...filters, page: p, limit });
@@ -38,8 +38,8 @@ export default function Notes() {
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
       <form onSubmit={add} className="card grid md:grid-cols-5 gap-3">
-        <input className="input" placeholder="Source lang" value={form.source} onChange={e=>setForm({...form, source:e.target.value})} />
-        <input className="input" placeholder="Target lang" value={form.target} onChange={e=>setForm({...form, target:e.target.value})} />
+        <input className="input" placeholder="Source lang (English)" value={form.source} onChange={e=>setForm({...form, source:e.target.value})} />
+        <input className="input" placeholder="Target lang (Hindi)" value={form.target} onChange={e=>setForm({...form, target:e.target.value})} />
         <input className="input" placeholder="Word/Phrase (source)" value={form.from} onChange={e=>setForm({...form, from:e.target.value})} required />
         <input className="input" placeholder="Translation (target)" value={form.to} onChange={e=>setForm({...form, to:e.target.value})} required />
         <button className="btn btn-primary">Add</button>
@@ -53,7 +53,7 @@ export default function Notes() {
         <div className="md:col-span-2 flex items-center">
           <div className="text-xs text-slate-400">Total: {total}</div>
           <div className="ml-auto flex gap-2">
-            <button className="btn" onClick={()=>setFilters({ q:'', source:'English', target:'Hindi' })}>Reset</button>
+            <button className="btn" onClick={()=>setFilters({ q:'', source:'', target:'' })}>Reset</button>
             <button className="btn" onClick={()=>load(page + 1)}>Next</button>
           </div>
         </div>

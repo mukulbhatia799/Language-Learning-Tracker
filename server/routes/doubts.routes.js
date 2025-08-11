@@ -6,6 +6,8 @@ import User from '../models/User.js';
 import Test from '../models/Test.js';
 import Submission from '../models/Submission.js';
 import Notification from '../models/Notification.js';
+import { emitNotification } from "../socket.js";
+
 
 let genAI = null;
 try {
@@ -184,6 +186,18 @@ router.post('/:id/answer', auth, requireRole('tutor'), async (req, res, next) =>
 
     res.json({ ok: true });
   } catch (e) { next(e); }
+});
+
+router.post("/ask", auth, async (req, res) => {
+  const { tutorId, question } = req.body;
+  const notif = await Notification.create({
+    user: tutorId,
+    title: "New doubt asked",
+    body: `${req.user.name} asked: ${question}`
+  });
+
+  emitNotification(tutorId, notif); // <-- real-time push
+  res.json({ message: "Doubt sent" });
 });
 
 export default router;
