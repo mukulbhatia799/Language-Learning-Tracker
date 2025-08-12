@@ -1,125 +1,86 @@
-# 🌐 Language Learning Tracker
+# Language Learning Tracker
 
-A full-stack web application to help learners practice, track progress, and interact with tutors.  
-Learners can take AI-generated MCQ tests, make notes, ask doubts from tutors or AI, and monitor their progress through a heatmap graph.  
-Tutors can create/manage tests, view submissions, answer learner doubts, and track learner engagement.
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Docker Pulls](https://img.shields.io/docker/pulls/library/node)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![React](https://img.shields.io/badge/Frontend-React-blue)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
+![Docker](https://img.shields.io/badge/Container-Docker-blue)
 
----
-
-## ✨ Features
-
-### For Learners
-- 📚 **AI-Powered Tests** — Take MCQ-based language translation tests generated via Google Gemini API.
-- 📅 **Progress Tracking** — View daily activity in a heatmap graph (similar to LeetCode).
-- 📝 **Notes Page** — Save learned vocabulary in `source → target` format.
-- ❓ **Ask Doubts** — Ask AI or directly message tutors; choose the test related to the doubt.
-- 🔔 **Notifications** — Receive alerts for tutor replies or important updates.
-
-### For Tutors
-- 🛠 **Test Creation** — Generate translation MCQs by specifying source & target languages, number of questions, and difficulty.
-- 📊 **Manage Tests** — Publish/unpublish tests, delete tests, and see completion counts.
-- 📥 **View Submissions** — Check learner answers and provide feedback.
-- 💬 **Doubt Resolution** — View learner doubts, reply, and mark them as solved.
-- 🔔 **Notifications** — Get notified when a learner asks a doubt.
+A full-stack **Language Learning Tracker** platform designed to help learners practice, test, and track their language learning progress, while enabling tutors to create, manage, and review tests.
 
 ---
 
-## 🏗 Tech Stack
+## 🚀 Features
 
-### Frontend
-- **React.js** — UI framework
-- **React Router** — Routing
-- **Tailwind CSS** — Styling
-- **react-hot-toast** — Notifications
-- **typewriter-effect** — Typing animation for AI responses
-
-### Backend
-- **Node.js** with **Express.js**
-- **MongoDB** & **Mongoose** for data storage
-- **JWT Authentication**
-- **Google Gemini API** for AI-generated test questions
+- **Role-Based Access**: Separate dashboards and features for Learners and Tutors.
+- **Test Creation & Management**: Tutors can create, publish, and manage tests.
+- **AI-Powered Question Generation**: Automatically generate MCQs using Google Gemini AI.
+- **Progress Tracking**: Learners can track completed tests and scores.
+- **Ask AI or Tutor**: Learners can ask AI for quick answers or directly text tutors with doubts.
+- **Real-Time Chat**: WebSocket-powered learner-tutor messaging with live typing indicators.
+- **Notifications**: Real-time notifications for test updates, chat messages, and doubts.
+- **Dockerized Deployment**: Easily deployable using Docker & Docker Compose.
+- **Responsive UI**: Clean white-blue modern UI for both desktop and mobile.
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Tech Stack
 
-```
-.
-├── client/           # React frontend
-│   ├── src/
-│   └── package.json
-├── server/           # Express backend
-│   ├── routes/
-│   ├── models/
-│   ├── middleware/
-│   └── package.json
-└── README.md
-```
+### **Frontend**
+- React.js
+- Tailwind CSS
+- Axios
+- WebSockets (Socket.IO)
 
----
+### **Backend**
+- Node.js (Express.js)
+- MongoDB (Mongoose)
+- Google Gemini AI API
+- JWT Authentication
+- Socket.IO for real-time communication
 
-## ⚙️ Environment Variables
-
-Create a `.env` file in the **server** directory:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRES_IN=1d
-CORS_ORIGIN=http://localhost:5173
-GOOGLE_API_KEY=your_google_gemini_api_key
-```
-
-For **client** (optional `.env` if needed):
-```env
-VITE_API_BASE=http://localhost:5000/api
-```
+### **Deployment**
+- Docker & Docker Compose
+- AWS EC2
 
 ---
 
-## 🚀 Getting Started
+## 📦 Installation
 
-### 1️⃣ Clone the repository
+1. **Clone the Repository**
 ```bash
 git clone https://github.com/your-username/language-learning-tracker.git
 cd language-learning-tracker
 ```
 
-### 2️⃣ Install dependencies
-```bash
-# Install frontend dependencies
-cd client
-npm install
-
-# Install backend dependencies
-cd ../server
-npm install
+2. **Set up Environment Variables**
+Create `.env` in both **server** and **client** directories and configure:
+```env
+# Server .env
+PORT=5000
+MONGO_URL=your_mongodb_url
+JWT_SECRET=your_jwt_secret
+GOOGLE_API_KEY=your_google_api_key
+CORS_ORIGIN=http://localhost:5173
 ```
 
-### 3️⃣ Start development servers
-```bash
-# Start backend
-cd server
-npm run dev
-
-# Start frontend
-cd ../client
-npm run dev
+```env
+# Client .env
+VITE_API_URL=http://localhost:5000
 ```
+
+3. **Run Locally**
+```bash
+docker-compose up --build
+```
+
+4. Access the app:
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:5000`
 
 ---
 
 ## 📸 Screenshots
-
-### Learner Dashboard
-![Learner Dashboard](docs/screenshots/learner_dashboard.png)
-
-### Tutor Manage Tests
-![Tutor Manage Tests](docs/screenshots/tutor_manage_tests.png)
-
----
-
-## 📌 Notes
-- Ensure you have a valid **Google Gemini API Key** to generate AI-based questions.
-- For deployment, configure environment variables for both frontend and backend in your hosting platform.
+Add Screenshots
