@@ -1,13 +1,5 @@
 # Language Learning Tracker
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Docker Pulls](https://img.shields.io/docker/pulls/library/node)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/Frontend-React-blue)
-![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
-![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
-![Docker](https://img.shields.io/badge/Container-Docker-blue)
-
 A full-stack **Language Learning Tracker** platform designed to help learners practice, test, and track their language learning progress, while enabling tutors to create, manage, and review tests.
 
 ---
